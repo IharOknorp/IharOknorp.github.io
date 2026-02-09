@@ -176,6 +176,13 @@
 
       .stat strong {
         font-size: 1.1rem;
+        display: block;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      .stat .small {
+        font-size: 1rem;
       }
 
       section {
@@ -371,7 +378,7 @@
             </div>
             <div class="stat">
               <div style="color: var(--muted);">Contact</div>
-              <strong>oknorpCorp@gmail.com</strong>
+              <strong class="small">oknorpCorp@gmail.com</strong>
             </div>
           </div>
         </div>
