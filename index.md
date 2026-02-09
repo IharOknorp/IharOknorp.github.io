@@ -1,52 +1,580 @@
-Privacy Policy
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oknorp Market</title>
+    <meta
+      name="description"
+      content="Oknorp Market - a modern Android app hub with featured apps, collections, and developer tools."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap");
 
-Ihar Pronka built the Окnorp app as a subscription app. This SERVICE is provided by Ihar Pronka at no cost and is intended for use as is.
+      :root {
+        --bg: #0b1016;
+        --bg-2: #0f1722;
+        --panel: #111a26;
+        --panel-2: #151f2d;
+        --ink: #e7eef7;
+        --muted: #9db0c3;
+        --accent: #4de7a3;
+        --accent-2: #53b5ff;
+        --line: #223144;
+        --card-shadow: 0 24px 60px rgba(5, 10, 20, 0.45);
+      }
 
-This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decides to use my Service.
+      * {
+        box-sizing: border-box;
+      }
 
-If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+      body {
+        margin: 0;
+        font-family: "Spline Sans", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(1200px 600px at 10% -10%, #16314a 0%, transparent 60%),
+          radial-gradient(900px 500px at 90% -20%, #1a3a2f 0%, transparent 55%),
+          var(--bg);
+        line-height: 1.6;
+      }
 
-The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Окnorp unless otherwise defined in this Privacy Policy.
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-Information Collection and Use
-For a better experience while using our Service, I may require you to provide certain personally identifiable information, including but not limited to Device ID. The information that I request will be retained on your device and is not collected by me in any way.
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-The app does use third party services that may collect information used to identify you. Below are links to the privacy policies of third party service providers used by the app:
+      .shell {
+        width: min(1160px, 92vw);
+        margin: 0 auto;
+      }
 
-[Revenuecat.com](https://www.revenuecat.com/)
+      header {
+        padding: 36px 0 24px;
+      }
 
-Log Data
-I want to inform you that whenever you use my Service, in case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device’s Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
 
-Cookies
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
 
-This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+      .logo-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: conic-gradient(from 120deg, var(--accent), var(--accent-2), #7c7bff, var(--accent));
+        box-shadow: 0 10px 26px rgba(83, 181, 255, 0.35);
+      }
 
-Service Providers
-I may employ third-party companies and individuals due to the following reasons:
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        font-weight: 500;
+        color: var(--muted);
+      }
 
-To facilitate our Service;
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        font-weight: 600;
+      }
 
-To provide the Service on our behalf;
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: center;
+        padding: 32px 0 56px;
+      }
 
-To perform Service-related services; or
+      .hero h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.7rem);
+        line-height: 1.1;
+        margin: 0 0 16px;
+      }
 
-To assist us in analyzing how our Service is used.
+      .hero p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
 
-I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
 
-Security
-I value your trust in providing your Personal Information, and I strive to use commercially acceptable means of protecting it. However, remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+      .btn-primary,
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-radius: 14px;
+        font-weight: 600;
+        border: 1px solid transparent;
+      }
 
-Links to Other Sites
-This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+      .btn-primary {
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        color: #061017;
+      }
 
-Children’s Privacy
-These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the event that I discover a child under 13 has provided me with personal information, I will immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that necessary actions can be taken.
+      .btn-ghost {
+        border-color: var(--line);
+        color: var(--ink);
+        background: transparent;
+      }
 
-Changes to This Privacy Policy
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+      .hero-card {
+        background: linear-gradient(155deg, rgba(21, 31, 45, 0.96), rgba(9, 15, 24, 0.92));
+        padding: 24px;
+        border-radius: 22px;
+        border: 1px solid rgba(83, 181, 255, 0.2);
+        box-shadow: var(--card-shadow);
+      }
 
-Contact Us
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at oknorpCorp@gmail.com.
+      .hero-card h3 {
+        margin: 0 0 16px;
+        font-size: 1.1rem;
+      }
+
+      .search {
+        display: grid;
+        gap: 12px;
+      }
+
+      .search input,
+      .search select {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--ink);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .stat {
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(12, 20, 30, 0.6);
+        border: 1px solid var(--line);
+      }
+
+      .stat strong {
+        font-size: 1.1rem;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.7rem;
+      }
+
+      .section-title span {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 18px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        display: grid;
+        gap: 12px;
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .app-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #2b65f8, #66e8b7);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #0b1016;
+      }
+
+      .tag {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(83, 181, 255, 0.18);
+        color: #a7dcff;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .card .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .collections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+      }
+
+      .collection {
+        padding: 18px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(83, 181, 255, 0.16), rgba(77, 231, 163, 0.18));
+        border: 1px solid rgba(83, 181, 255, 0.3);
+      }
+
+      .collection h3 {
+        margin-top: 0;
+      }
+
+      .market-banner {
+        padding: 28px;
+        border-radius: 22px;
+        background: radial-gradient(300px 120px at 10% 20%, rgba(83, 181, 255, 0.3), transparent 60%),
+          radial-gradient(300px 120px at 90% 20%, rgba(77, 231, 163, 0.3), transparent 60%),
+          var(--panel);
+        border: 1px solid var(--line);
+        display: grid;
+        gap: 16px;
+      }
+
+      .footer {
+        padding: 42px 0 56px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .footer a {
+        color: var(--muted);
+      }
+
+      .privacy {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 18px;
+      }
+
+      @media (max-width: 720px) {
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell nav">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div>
+            Oknorp Market<br />
+            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Android app hub</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#featured">Featured</a>
+          <a href="#collections">Collections</a>
+          <a href="#dev">For Developers</a>
+          <a href="#privacy">Privacy</a>
+        </nav>
+        <a class="nav-cta" href="#submit">Submit app</a>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <h1>A modern Android market with curated, human-first apps.</h1>
+          <p>
+            Highlight your apps, ship updates faster, and build a storefront that feels intentional.
+            Oknorp Market is a clean, fast home for your Android portfolio.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#featured">Explore apps</a>
+            <a class="btn-ghost" href="#submit">Publish your app</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Quick discovery</h3>
+          <div class="search">
+            <input type="text" value="Search apps, games, tools" aria-label="Search" />
+            <select aria-label="Filter">
+              <option>Trending this week</option>
+              <option>New releases</option>
+              <option>Top rated</option>
+              <option>Editor picks</option>
+            </select>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div style="color: var(--muted);">Apps shipped</div>
+              <strong>120+</strong>
+            </div>
+            <div class="stat">
+              <div style="color: var(--muted);">Active installs</div>
+              <strong>48k</strong>
+            </div>
+            <div class="stat">
+              <div style="color: var(--muted);">Avg rating</div>
+              <strong>4.8</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured">
+        <div class="section-title">
+          <h2>Featured apps</h2>
+          <span>Hand-picked launches and updated builds</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-header">
+              <div class="app-icon">VV</div>
+              <span class="tag">Subscription</span>
+            </div>
+            <div>
+              <strong>BloomVibe</strong>
+              <p>
+                Discover BloomVibe, your personal AI-powered coach for better mood, focus, energy,
+                and creativity. Whether you need calm, motivation, mental clarity, or a creative
+                spark, BloomVibe instantly generates personalized rituals (playlists, micro-tasks,
+                mindfulness sessions) based on your feelings and goals.
+              </p>
+            </div>
+            <a
+              class="link"
+              href="https://play.google.com/store/apps/details?id=com.oknorp.online.vibevoyageai"
+              target="_blank"
+              rel="noopener"
+              >View app</a
+            >
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <div class="app-icon" style="background: linear-gradient(135deg, #f9d423, #ff4e50);">
+                SL
+              </div>
+              <span class="tag">New</span>
+            </div>
+            <div>
+              <strong>Slangify</strong>
+              <p>Language assistant for slang, short phrases, and quick learning.</p>
+            </div>
+            <a
+              class="link"
+              href="https://play.google.com/store/apps/details?id=com.slangify.pl"
+              target="_blank"
+              rel="noopener"
+              >View app</a
+            >
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <div class="app-icon" style="background: linear-gradient(135deg, #59c173, #a17fe0);">
+                AT
+              </div>
+              <span class="tag">Editor pick</span>
+            </div>
+            <div>
+              <strong>AI Translate</strong>
+              <p>Instant AI translations with clean UI and fast results.</p>
+            </div>
+            <a
+              class="link"
+              href="https://play.google.com/store/apps/details?id=com.freeok.online.aitranslate"
+              target="_blank"
+              rel="noopener"
+              >View app</a
+            >
+          </article>
+          <article class="card">
+            <div class="card-header">
+              <div class="app-icon" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+                UA
+              </div>
+              <span class="tag">Tools</span>
+            </div>
+            <div>
+              <strong>Umowa AI</strong>
+              <p>AI assistant for documents, summaries, and contract insights.</p>
+            </div>
+            <a
+              class="link"
+              href="https://play.google.com/store/apps/details?id=com.freeok.umowaai.app"
+              target="_blank"
+              rel="noopener"
+              >View app</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="collections">
+        <div class="section-title">
+          <h2>Curated collections</h2>
+          <span>Launch bundles to guide your audience</span>
+        </div>
+        <div class="collections">
+          <div class="collection">
+            <h3>Offline essentials</h3>
+            <p>Maps, notes, and travel tools that keep working without signal.</p>
+            <a class="link" href="#">Open collection</a>
+          </div>
+          <div class="collection">
+            <h3>Focus stack</h3>
+            <p>Minimal apps for deep work, soundscapes, and time tracking.</p>
+            <a class="link" href="#">Open collection</a>
+          </div>
+          <div class="collection">
+            <h3>Creator tools</h3>
+            <p>Apps for writers, designers, and indie teams shipping content.</p>
+            <a class="link" href="#">Open collection</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="dev">
+        <div class="section-title">
+          <h2>For developers</h2>
+          <span>Analytics, reviews, and direct user feedback</span>
+        </div>
+        <div class="market-banner">
+          <strong>Launch smarter with Oknorp Studio</strong>
+          <p>
+            Track installs, monitor ratings, and push update notes in one dashboard. We support
+            subscriptions, beta channels, and direct feedback loops for your users.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#submit">Get started</a>
+            <a class="btn-ghost" href="#">View docs</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="submit">
+        <div class="section-title">
+          <h2>Submit your app</h2>
+          <span>Fast review and premium placement</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <strong>1. Send build</strong>
+            <p>Share your APK/AAB link and store assets.</p>
+          </article>
+          <article class="card">
+            <strong>2. Review</strong>
+            <p>We review security, performance, and polish within 48 hours.</p>
+          </article>
+          <article class="card">
+            <strong>3. Launch</strong>
+            <p>Go live with marketing placements, badges, and reviews.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <div class="section-title">
+          <h2>Privacy policy</h2>
+          <span>Transparent and simple</span>
+        </div>
+        <div class="card">
+          <p>
+            Oknorp is a subscription-based Android app. We do not collect personal data directly.
+            Third-party services like RevenueCat may collect device data for subscription analytics.
+            You can contact us anytime with privacy questions.
+          </p>
+          <p class="privacy">
+            Contact: oknorpCorp@gmail.com
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <div>
+          <strong>Oknorp Market</strong>
+          <p class="privacy">Curated Android apps, built by Ihar Pronka.</p>
+        </div>
+        <div>
+          <strong>Explore</strong>
+          <div><a href="#featured">Featured</a></div>
+          <div><a href="#collections">Collections</a></div>
+          <div><a href="#dev">Developers</a></div>
+        </div>
+        <div>
+          <strong>Legal</strong>
+          <div><a href="#privacy">Privacy</a></div>
+          <div><a href="#">Terms</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
