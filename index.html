@@ -210,8 +210,10 @@
         border-radius: 18px;
         background: var(--panel);
         border: 1px solid var(--line);
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 12px;
+        min-height: 320px;
       }
 
       .card-header {
@@ -262,6 +264,14 @@
         gap: 6px;
         font-weight: 600;
         color: var(--accent);
+        margin-top: auto;
+      }
+
+      .card .clamp {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
       }
 
       .footer {
@@ -295,6 +305,17 @@
 
       .fact-list li {
         margin-bottom: 8px;
+      }
+
+      .contact-card {
+        width: 100%;
+      }
+
+      .contact-email {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ink);
+        word-break: break-word;
       }
 
       @media (max-width: 720px) {
@@ -369,11 +390,11 @@
                 src="assets/icons/bloomVibe.png"
                 alt="BloomVibe icon"
               />
-              <span class="tag">Subscription</span>
+              <span class="tag">Entertainment</span>
             </div>
             <div>
               <strong>BloomVibe</strong>
-              <p>
+              <p class="clamp">
                 AI-powered coach for mood, focus, energy, and creativity. Instantly builds
                 personalized rituals from your feelings and goals.
               </p>
@@ -393,11 +414,11 @@
                 src="assets/icons/slangify.png"
                 alt="Slangify icon"
               />
-              <span class="tag">New</span>
+              <span class="tag">Entertainment</span>
             </div>
             <div>
               <strong>Slangify</strong>
-              <p>Language assistant for slang, short phrases, and quick learning.</p>
+              <p class="clamp">Language assistant for slang, short phrases, and quick learning.</p>
             </div>
             <a
               class="link"
@@ -414,11 +435,11 @@
                 src="assets/icons/aitranslate.png"
                 alt="AI Translate icon"
               />
-              <span class="tag">Editor pick</span>
+              <span class="tag">Translate</span>
             </div>
             <div>
               <strong>AI Translate</strong>
-              <p>Instant AI translations with clean UI and fast results.</p>
+              <p class="clamp">Instant AI translations with clean UI and fast results.</p>
             </div>
             <a
               class="link"
@@ -435,11 +456,11 @@
                 src="assets/icons/umowaai.png"
                 alt="Umowa AI icon"
               />
-              <span class="tag">Tools</span>
+              <span class="tag">Business</span>
             </div>
             <div>
               <strong>Umowa AI</strong>
-              <p>AI assistant for documents, summaries, and contract insights.</p>
+              <p class="clamp">AI assistant for documents, summaries, and contract insights.</p>
             </div>
             <a
               class="link"
@@ -476,9 +497,9 @@
           <h2>Contact</h2>
           <span>Let’s connect</span>
         </div>
-        <div class="card">
+        <div class="card contact-card">
           <p>For support, partnerships, or press, reach me here:</p>
-          <p class="privacy">Email: oknorpCorp@gmail.com</p>
+          <p class="contact-email">oknorpCorp@gmail.com</p>
         </div>
       </section>
 
