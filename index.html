@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Oknorp Market</title>
+    <title>Ihar Pronka — Android App Creator</title>
     <meta
       name="description"
-      content="Oknorp Market - a modern Android app hub with featured apps, collections, and developer tools."
+      content="Ihar Pronka - creator of Android apps and AI-powered tools."
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap");
@@ -160,21 +160,6 @@
         font-size: 1.1rem;
       }
 
-      .search {
-        display: grid;
-        gap: 12px;
-      }
-
-      .search input,
-      .search select {
-        width: 100%;
-        padding: 12px 14px;
-        border-radius: 12px;
-        border: 1px solid var(--line);
-        background: var(--panel-2);
-        color: var(--ink);
-      }
-
       .stats {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -279,34 +264,6 @@
         color: var(--accent);
       }
 
-      .collections {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-      }
-
-      .collection {
-        padding: 18px;
-        border-radius: 18px;
-        background: linear-gradient(135deg, rgba(83, 181, 255, 0.16), rgba(77, 231, 163, 0.18));
-        border: 1px solid rgba(83, 181, 255, 0.3);
-      }
-
-      .collection h3 {
-        margin-top: 0;
-      }
-
-      .market-banner {
-        padding: 28px;
-        border-radius: 22px;
-        background: radial-gradient(300px 120px at 10% 20%, rgba(83, 181, 255, 0.3), transparent 60%),
-          radial-gradient(300px 120px at 90% 20%, rgba(77, 231, 163, 0.3), transparent 60%),
-          var(--panel);
-        border: 1px solid var(--line);
-        display: grid;
-        gap: 16px;
-      }
-
       .footer {
         padding: 42px 0 56px;
         border-top: 1px solid var(--line);
@@ -330,6 +287,16 @@
         margin-top: 18px;
       }
 
+      .fact-list {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .fact-list li {
+        margin-bottom: 8px;
+      }
+
       @media (max-width: 720px) {
         .nav-links {
           display: none;
@@ -343,56 +310,47 @@
         <div class="logo">
           <div class="logo-mark"></div>
           <div>
-            Oknorp Market<br />
-            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Android app hub</span>
+            Ihar Pronka<br />
+            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Android app creator</span>
           </div>
         </div>
         <nav class="nav-links">
-          <a href="#featured">Featured</a>
-          <a href="#collections">Collections</a>
-          <a href="#dev">For Developers</a>
+          <a href="#featured">Apps</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
           <a href="#privacy">Privacy</a>
         </nav>
-        <a class="nav-cta" href="#submit">Submit app</a>
+        <a class="nav-cta" href="#contact">Contact</a>
       </div>
     </header>
 
     <main class="shell">
       <section class="hero">
         <div>
-          <h1>A modern Android market with curated, human-first apps.</h1>
+          <h1>Hi, I’m Ihar — creator of focused Android apps.</h1>
           <p>
-            Highlight your apps, ship updates faster, and build a storefront that feels intentional.
-            Oknorp Market is a clean, fast home for your Android portfolio.
+            I build lightweight AI-powered tools for mood, language, translation, and productivity.
+            Below you can find my live apps and ways to reach me.
           </p>
           <div class="hero-actions">
-            <a class="btn-primary" href="#featured">Explore apps</a>
-            <a class="btn-ghost" href="#submit">Publish your app</a>
+            <a class="btn-primary" href="#featured">View apps</a>
+            <a class="btn-ghost" href="#contact">Contact me</a>
           </div>
         </div>
         <div class="hero-card">
-          <h3>Quick discovery</h3>
-          <div class="search">
-            <input type="text" value="Search apps, games, tools" aria-label="Search" />
-            <select aria-label="Filter">
-              <option>Trending this week</option>
-              <option>New releases</option>
-              <option>Top rated</option>
-              <option>Editor picks</option>
-            </select>
-          </div>
+          <h3>Quick facts</h3>
           <div class="stats">
             <div class="stat">
-              <div style="color: var(--muted);">Apps shipped</div>
-              <strong>120+</strong>
+              <div style="color: var(--muted);">Apps live</div>
+              <strong>4</strong>
             </div>
             <div class="stat">
-              <div style="color: var(--muted);">Active installs</div>
-              <strong>48k</strong>
+              <div style="color: var(--muted);">Primary focus</div>
+              <strong>AI tools</strong>
             </div>
             <div class="stat">
-              <div style="color: var(--muted);">Avg rating</div>
-              <strong>4.8</strong>
+              <div style="color: var(--muted);">Contact</div>
+              <strong>oknorpCorp@gmail.com</strong>
             </div>
           </div>
         </div>
@@ -400,8 +358,8 @@
 
       <section id="featured">
         <div class="section-title">
-          <h2>Featured apps</h2>
-          <span>Hand-picked launches and updated builds</span>
+          <h2>Apps</h2>
+          <span>Live on Google Play</span>
         </div>
         <div class="grid">
           <article class="card">
@@ -494,66 +452,33 @@
         </div>
       </section>
 
-      <section id="collections">
+      <section id="about">
         <div class="section-title">
-          <h2>Curated collections</h2>
-          <span>Launch bundles to guide your audience</span>
+          <h2>About me</h2>
+          <span>Independent developer</span>
         </div>
-        <div class="collections">
-          <div class="collection">
-            <h3>Offline essentials</h3>
-            <p>Maps, notes, and travel tools that keep working without signal.</p>
-            <a class="link" href="#">Open collection</a>
-          </div>
-          <div class="collection">
-            <h3>Focus stack</h3>
-            <p>Minimal apps for deep work, soundscapes, and time tracking.</p>
-            <a class="link" href="#">Open collection</a>
-          </div>
-          <div class="collection">
-            <h3>Creator tools</h3>
-            <p>Apps for writers, designers, and indie teams shipping content.</p>
-            <a class="link" href="#">Open collection</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="dev">
-        <div class="section-title">
-          <h2>For developers</h2>
-          <span>Analytics, reviews, and direct user feedback</span>
-        </div>
-        <div class="market-banner">
-          <strong>Launch smarter with Oknorp Studio</strong>
+        <div class="card">
           <p>
-            Track installs, monitor ratings, and push update notes in one dashboard. We support
-            subscriptions, beta channels, and direct feedback loops for your users.
+            I build Android apps that are fast, focused, and designed to feel clear and calm.
+            My work blends AI with simple UX to help people learn, translate, and manage their daily
+            tasks with less friction.
           </p>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#submit">Get started</a>
-            <a class="btn-ghost" href="#">View docs</a>
-          </div>
+          <ul class="fact-list">
+            <li>App themes: mood, language, translation, productivity.</li>
+            <li>Design focus: minimal UI, fast onboarding, offline-friendly flows.</li>
+            <li>Open to partnerships and feedback.</li>
+          </ul>
         </div>
       </section>
 
-      <section id="submit">
+      <section id="contact">
         <div class="section-title">
-          <h2>Submit your app</h2>
-          <span>Fast review and premium placement</span>
+          <h2>Contact</h2>
+          <span>Let’s connect</span>
         </div>
-        <div class="grid">
-          <article class="card">
-            <strong>1. Send build</strong>
-            <p>Share your APK/AAB link and store assets.</p>
-          </article>
-          <article class="card">
-            <strong>2. Review</strong>
-            <p>We review security, performance, and polish within 48 hours.</p>
-          </article>
-          <article class="card">
-            <strong>3. Launch</strong>
-            <p>Go live with marketing placements, badges, and reviews.</p>
-          </article>
+        <div class="card">
+          <p>For support, partnerships, or press, reach me here:</p>
+          <p class="privacy">Email: oknorpCorp@gmail.com</p>
         </div>
       </section>
 
@@ -578,19 +503,18 @@
     <footer class="footer">
       <div class="shell footer-grid">
         <div>
-          <strong>Oknorp Market</strong>
-          <p class="privacy">Curated Android apps, built by Ihar Pronka.</p>
+          <strong>Ihar Pronka</strong>
+          <p class="privacy">Android apps built with care and clarity.</p>
         </div>
         <div>
           <strong>Explore</strong>
-          <div><a href="#featured">Featured</a></div>
-          <div><a href="#collections">Collections</a></div>
-          <div><a href="#dev">Developers</a></div>
+          <div><a href="#featured">Apps</a></div>
+          <div><a href="#about">About</a></div>
+          <div><a href="#contact">Contact</a></div>
         </div>
         <div>
           <strong>Legal</strong>
           <div><a href="#privacy">Privacy</a></div>
-          <div><a href="#">Terms</a></div>
         </div>
       </div>
     </footer>
