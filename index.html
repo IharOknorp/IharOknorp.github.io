@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ihar Pronka — Android Apps &amp; Utilities</title>
+    <title>Ihar Pronka — Mobile Apps &amp; Utilities</title>
     <meta
       name="description"
-      content="Ihar Pronka builds Android apps for mood tracking, slang, OCR, file conversion, and lightweight AI-powered utilities."
+      content="Ihar Pronka builds mobile apps for mood tracking, slang, OCR, file conversion, and lightweight AI-powered utilities."
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap");
@@ -265,13 +265,45 @@
         color: var(--muted);
       }
 
-      .card .link {
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: auto;
+      }
+
+      .market-link {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
+        padding: 9px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(77, 231, 163, 0.18);
+        background: rgba(77, 231, 163, 0.08);
         font-weight: 600;
         color: var(--accent);
-        margin-top: auto;
+        white-space: nowrap;
+        font-size: 0.95rem;
+      }
+
+      .market-link-muted {
+        border-style: dashed;
+        border-color: var(--line);
+        background: rgba(83, 181, 255, 0.06);
+        color: var(--muted);
+        cursor: default;
+      }
+
+      .market-icon {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+      }
+
+      .market-link-label {
+        line-height: 1;
       }
 
       .card .clamp {
@@ -279,6 +311,16 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
         overflow: hidden;
+      }
+
+      .card-note {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .card-actions-compact .market-link {
+        font-size: 0.9rem;
+        padding: 8px 10px;
       }
 
       .footer {
@@ -339,7 +381,7 @@
           <div class="logo-mark"></div>
           <div>
             Ihar Pronka<br />
-            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Android app creator</span>
+            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Mobile app developer</span>
           </div>
         </div>
         <nav class="nav-links">
@@ -355,11 +397,11 @@
     <main class="shell">
       <section class="hero">
         <div>
-          <h1>Hi, I’m Ihar — creator of focused Android apps and utilities.</h1>
+          <h1>Hi, I’m Ihar — creator of focused mobile apps and utilities.</h1>
           <p>
-            I build lightweight Android products for mood tracking, language, OCR, file conversion,
+            I build lightweight mobile products for mood tracking, language, OCR, file conversion,
             and simple AI-assisted everyday tasks.
-            Below you can find my live apps and ways to reach me.
+            Below you can find my featured apps, upcoming releases, and ways to reach me.
           </p>
           <div class="hero-actions">
             <a class="btn-primary" href="#featured">View apps</a>
@@ -370,12 +412,12 @@
           <h3>Quick facts</h3>
           <div class="stats">
             <div class="stat">
-              <div style="color: var(--muted);">Apps live</div>
-              <strong>5</strong>
+              <div style="color: var(--muted);">Apps featured</div>
+              <strong>5 featured</strong>
             </div>
             <div class="stat">
               <div style="color: var(--muted);">Primary focus</div>
-              <strong>AI + utility apps</strong>
+              <strong>Mobile utilities</strong>
             </div>
             <div class="stat">
               <div style="color: var(--muted);">Contact</div>
@@ -388,7 +430,7 @@
       <section id="featured">
         <div class="section-title">
           <h2>Apps</h2>
-          <span>Live on Google Play</span>
+          <span>Google Play + App Store</span>
         </div>
         <div class="grid">
           <article class="card">
@@ -406,13 +448,20 @@
                 AI-powered ideas, rituals, and daily inspiration tailored to your mood and vibe.
               </p>
             </div>
-            <a
-              class="link"
-              href="https://play.google.com/store/apps/details?id=com.oknorp.online.vibevoyageai"
-              target="_blank"
-              rel="noopener"
-              >View app</a
-            >
+            <div class="card-actions">
+              <a
+                class="market-link"
+                href="https://play.google.com/store/apps/details?id=com.oknorp.online.vibevoyageai"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="3,2 14,12 3,22" fill="#00d084"></polygon>
+                  <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
+                  <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
+                  <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
+                </svg><span class="market-link-label">Google Play</span></a
+              >
+            </div>
           </article>
           <article class="card">
             <div class="card-header">
@@ -429,13 +478,20 @@
                 Turns plain text into viral slang and Gen Z-style expressions in seconds.
               </p>
             </div>
-            <a
-              class="link"
-              href="https://play.google.com/store/apps/details?id=com.slangify.pl"
-              target="_blank"
-              rel="noopener"
-              >View app</a
-            >
+            <div class="card-actions">
+              <a
+                class="market-link"
+                href="https://play.google.com/store/apps/details?id=com.slangify.pl"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="3,2 14,12 3,22" fill="#00d084"></polygon>
+                  <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
+                  <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
+                  <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
+                </svg><span class="market-link-label">Google Play</span></a
+              >
+            </div>
           </article>
           <article class="card">
             <div class="card-header">
@@ -449,16 +505,23 @@
             <div>
               <strong>FileShift: File Converter</strong>
               <p class="clamp">
-                Offline file converter for PDF, image, audio, and video tasks on Android.
+                Offline file converter for PDF, image, audio, and video tasks on mobile.
               </p>
             </div>
-            <a
-              class="link"
-              href="https://play.google.com/store/apps/details?id=com.freeok.online.aitranslate"
-              target="_blank"
-              rel="noopener"
-              >View app</a
-            >
+            <div class="card-actions">
+              <a
+                class="market-link"
+                href="https://play.google.com/store/apps/details?id=com.freeok.online.aitranslate"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="3,2 14,12 3,22" fill="#00d084"></polygon>
+                  <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
+                  <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
+                  <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
+                </svg><span class="market-link-label">Google Play</span></a
+              >
+            </div>
           </article>
           <article class="card">
             <div class="card-header">
@@ -475,13 +538,20 @@
                 Fast OCR scanner for converting photos and PDFs into editable text.
               </p>
             </div>
-            <a
-              class="link"
-              href="https://play.google.com/store/apps/details?id=com.freeok.umowaai.app"
-              target="_blank"
-              rel="noopener"
-              >View app</a
-            >
+            <div class="card-actions">
+              <a
+                class="market-link"
+                href="https://play.google.com/store/apps/details?id=com.freeok.umowaai.app"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="3,2 14,12 3,22" fill="#00d084"></polygon>
+                  <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
+                  <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
+                  <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
+                </svg><span class="market-link-label">Google Play</span></a
+              >
+            </div>
           </article>
           <article class="card">
             <div class="card-header">
@@ -498,13 +568,29 @@
                 Track your mood, add notes, and review your daily records in one place.
               </p>
             </div>
-            <a
-              class="link"
-              href="https://play.google.com/store/apps/details?id=com.oknorp.agriai"
-              target="_blank"
-              rel="noopener"
-              >View app</a
-            >
+            <p class="card-note">iOS version is in progress.</p>
+            <div class="card-actions card-actions-compact">
+              <a
+                class="market-link"
+                href="https://play.google.com/store/apps/details?id=com.oknorp.agriai"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="3,2 14,12 3,22" fill="#00d084"></polygon>
+                  <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
+                  <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
+                  <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
+                </svg><span class="market-link-label">Google Play</span></a
+              >
+              <span class="market-link market-link-muted"
+                ><svg class="market-icon" viewBox="0 0 384 512" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
+                  ></path>
+                </svg><span class="market-link-label">App Store</span></span
+              >
+            </div>
           </article>
         </div>
       </section>
@@ -516,7 +602,7 @@
         </div>
         <div class="card">
           <p>
-            I build Android apps that are fast, focused, and easy to use. My work spans
+            I build mobile apps that are fast, focused, and easy to use. My work spans
             entertainment, language, OCR, file utilities, and mood tracking, with a strong focus on
             simple UX and lightweight mobile experiences.
           </p>
@@ -559,6 +645,13 @@
                 rel="noopener"
                 >Privacy Policy</a
               >
+              /
+              <a
+                href="https://iharoknorp.github.io/bloom-vibe-terms-of-service/"
+                target="_blank"
+                rel="noopener"
+                >Terms</a
+              >
             </li>
             <li>
               Slangify: AI Slang Translator:
@@ -568,10 +661,29 @@
                 rel="noopener"
                 >Privacy Policy</a
               >
+              /
+              <a
+                href="https://iharoknorp.github.io/slangify-terms/"
+                target="_blank"
+                rel="noopener"
+                >Terms</a
+              >
             </li>
             <li>
-              FileShift: File Converter: dedicated Privacy Policy and Terms links can be added here
-              as soon as their public URLs are published.
+              FileShift: File Converter:
+              <a
+                href="https://iharoknorp.github.io/translate_privacy_policy/"
+                target="_blank"
+                rel="noopener"
+                >Privacy Policy</a
+              >
+              /
+              <a
+                href="https://iharoknorp.github.io/translate_terms/"
+                target="_blank"
+                rel="noopener"
+                >Terms</a
+              >
             </li>
             <li>
               Docutero OCR: PDF to Text:
@@ -590,11 +702,18 @@
                 rel="noopener"
                 >Privacy Policy</a
               >
+              /
+              <a
+                href="https://iharoknorp.github.io/farm-syn-ai-terms/"
+                target="_blank"
+                rel="noopener"
+                >Terms</a
+              >
             </li>
           </ul>
           <p class="privacy">
-            If you want, separate public Terms of Use links can be added here next to each app as
-            soon as their final URLs are published.
+            Docutero currently has a public privacy page listed here. If you publish a separate
+            Terms page for it later, it can be added in the same format.
           </p>
           <p class="privacy">Legal contact: oknorpCorp@gmail.com</p>
         </div>
@@ -605,7 +724,7 @@
       <div class="shell footer-grid">
         <div>
           <strong>Ihar Pronka</strong>
-          <p class="privacy">Android apps built with care and clarity.</p>
+          <p class="privacy">Mobile apps built with care and clarity.</p>
         </div>
         <div>
           <strong>Explore</strong>
