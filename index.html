@@ -421,6 +421,7 @@
       }
 
       .panel-stat {
+        min-width: 0;
         padding: 16px;
         border-radius: 18px;
         background: rgba(255, 255, 255, 0.72);
@@ -438,11 +439,22 @@
 
       .panel-stat strong {
         display: block;
+        min-width: 0;
         margin-top: 8px;
         font-family: "Syne", sans-serif;
         font-size: 1.55rem;
         line-height: 1;
         letter-spacing: -0.04em;
+      }
+
+      .panel-stat-email {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.94rem;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
       .panel-strip {
@@ -765,6 +777,7 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 18px;
+        min-width: 0;
       }
 
       .contact-card strong {
@@ -775,16 +788,20 @@
       }
 
       .contact-email {
-        display: inline-flex;
-        align-items: center;
-        width: fit-content;
-        max-width: 100%;
+        display: block;
+        min-width: 0;
+        width: 100%;
         padding: 13px 16px;
         border-radius: 999px;
         background: var(--surface-dark);
         color: #fff8ef;
         font-weight: 700;
+        line-height: 1.25;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
         word-break: break-word;
+        hyphens: auto;
       }
 
       .contact-footnote {
@@ -959,6 +976,13 @@
           padding: 22px;
         }
 
+        .contact-email {
+          padding: 12px 14px;
+          border-radius: 22px;
+          font-size: 0.92rem;
+          word-break: break-all;
+        }
+
         .footer-bar {
           align-items: flex-start;
         }
@@ -1044,7 +1068,7 @@
               </div>
               <div class="panel-stat">
                 <span>Contact</span>
-                <strong style="font-size: 1.06rem; line-height: 1.2;">oknorpCorp@gmail.com</strong>
+                <strong class="panel-stat-email">oknorpCorp@gmail.com</strong>
               </div>
             </div>
             <div class="panel-strip">
