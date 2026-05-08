@@ -3,39 +3,111 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ihar Pronka — Mobile Apps &amp; Utilities</title>
+    <title>Ihar Pronka - Mobile Apps and Utilities</title>
     <meta
       name="description"
-      content="Ihar Pronka builds mobile apps for mood tracking, slang, OCR, file conversion, and lightweight AI-powered utilities."
+      content="Ihar Pronka builds focused mobile apps for mood tracking, slang, OCR, file conversion, hydration, editing, and lightweight AI-powered tools."
     />
+    <meta name="theme-color" content="#f7efe2" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
       :root {
-        --bg: #0b1016;
-        --bg-2: #0f1722;
-        --panel: #111a26;
-        --panel-2: #151f2d;
-        --ink: #e7eef7;
-        --muted: #9db0c3;
-        --accent: #4de7a3;
-        --accent-2: #53b5ff;
-        --line: #223144;
-        --card-shadow: 0 24px 60px rgba(5, 10, 20, 0.45);
+        --bg: #f7efe2;
+        --bg-deep: #f1e6d5;
+        --surface: rgba(255, 251, 245, 0.72);
+        --surface-strong: rgba(255, 250, 243, 0.92);
+        --surface-dark: #191514;
+        --ink: #171312;
+        --muted: #6e6259;
+        --line: rgba(23, 19, 18, 0.1);
+        --line-strong: rgba(23, 19, 18, 0.16);
+        --accent: #ff8057;
+        --accent-2: #30c79f;
+        --accent-3: #296dff;
+        --accent-soft: rgba(255, 128, 87, 0.16);
+        --shadow-lg: 0 28px 80px rgba(54, 32, 15, 0.14);
+        --shadow-md: 0 18px 40px rgba(54, 32, 15, 0.1);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --radius-sm: 14px;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        font-family: "Spline Sans", "Segoe UI", sans-serif;
+        min-height: 100vh;
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
         color: var(--ink);
-        background: radial-gradient(1200px 600px at 10% -10%, #16314a 0%, transparent 60%),
-          radial-gradient(900px 500px at 90% -20%, #1a3a2f 0%, transparent 55%),
-          var(--bg);
+        background:
+          radial-gradient(circle at top left, rgba(255, 143, 91, 0.24), transparent 28%),
+          radial-gradient(circle at 86% 18%, rgba(48, 199, 159, 0.22), transparent 24%),
+          radial-gradient(circle at 72% 82%, rgba(41, 109, 255, 0.14), transparent 20%),
+          linear-gradient(180deg, var(--bg) 0%, #fcf8f1 58%, #f5ebdc 100%);
         line-height: 1.6;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 64px,
+            rgba(23, 19, 18, 0.03) 64px,
+            rgba(23, 19, 18, 0.03) 65px
+          );
+        pointer-events: none;
+        opacity: 0.45;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        right: -120px;
+        top: 120px;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 128, 87, 0.18), transparent 66%);
+        filter: blur(16px);
+        pointer-events: none;
+        animation: drift 18s ease-in-out infinite alternate;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translateY(0) scale(1);
+        }
+
+        to {
+          transform: translateY(42px) scale(1.08);
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       a {
@@ -44,254 +116,594 @@
       }
 
       img {
-        max-width: 100%;
         display: block;
+        max-width: 100%;
       }
 
       .shell {
-        width: min(1160px, 92vw);
+        width: min(1180px, calc(100vw - 32px));
         margin: 0 auto;
       }
 
-      header {
-        padding: 36px 0 24px;
+      .topbar {
+        position: sticky;
+        top: 16px;
+        z-index: 20;
+        padding: 24px 0 0;
       }
 
       .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 20px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        background: rgba(255, 249, 241, 0.72);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: 0 16px 40px rgba(69, 38, 12, 0.09);
+        backdrop-filter: blur(18px);
       }
 
-      .logo {
+      .brand {
         display: flex;
         align-items: center;
-        gap: 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.4px;
+        gap: 14px;
+        min-width: 0;
       }
 
-      .logo-mark {
-        width: 38px;
-        height: 38px;
-        border-radius: 12px;
-        background: conic-gradient(from 120deg, var(--accent), var(--accent-2), #7c7bff, var(--accent));
-        box-shadow: 0 10px 26px rgba(83, 181, 255, 0.35);
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 16px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0)),
+          conic-gradient(from 140deg, #ff8057, #ffcf6c, #30c79f, #296dff, #ff8057);
+        box-shadow:
+          inset 0 1px 1px rgba(255, 255, 255, 0.6),
+          0 14px 30px rgba(41, 109, 255, 0.18);
+      }
+
+      .brand-copy {
+        min-width: 0;
+      }
+
+      .brand-name {
+        display: block;
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-role {
+        display: block;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 600;
       }
 
       .nav-links {
         display: flex;
-        gap: 18px;
-        font-weight: 500;
+        align-items: center;
+        gap: 22px;
         color: var(--muted);
+        font-weight: 600;
+      }
+
+      .nav-links a {
+        transition: color 160ms ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--ink);
       }
 
       .nav-cta {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        padding: 10px 18px;
+        justify-content: center;
+        padding: 12px 18px;
         border-radius: 999px;
-        border: 1px solid var(--line);
-        background: var(--panel);
-        font-weight: 600;
+        background: var(--surface-dark);
+        color: #fff9f1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      main {
+        padding-bottom: 64px;
       }
 
       .hero {
+        padding: 36px 0 26px;
+      }
+
+      .hero-layout {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 32px;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        padding: 18px 0 0;
+        animation: rise 620ms ease both;
+      }
+
+      .eyebrow {
+        display: inline-flex;
         align-items: center;
-        padding: 32px 0 56px;
+        gap: 10px;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+        border-radius: 999px;
+        background: rgba(255, 249, 241, 0.76);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: 0 10px 28px rgba(54, 32, 15, 0.08);
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), #ffcc70);
+        box-shadow: 0 0 0 6px rgba(255, 128, 87, 0.12);
       }
 
       .hero h1 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.7rem);
-        line-height: 1.1;
-        margin: 0 0 16px;
+        margin: 0;
+        max-width: 11ch;
+        font-family: "Syne", sans-serif;
+        font-size: clamp(3.2rem, 2rem + 4vw, 6rem);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .hero h1 span {
+        color: var(--muted);
       }
 
       .hero p {
-        margin: 0 0 24px;
+        margin: 22px 0 0;
+        max-width: 610px;
         color: var(--muted);
+        font-size: clamp(1rem, 0.96rem + 0.26vw, 1.16rem);
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 14px;
+        margin-top: 28px;
       }
 
-      .btn-primary,
-      .btn-ghost {
+      .btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 10px;
-        padding: 12px 20px;
-        border-radius: 14px;
-        font-weight: 600;
-        border: 1px solid transparent;
+        padding: 14px 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background 180ms ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-1px);
       }
 
       .btn-primary {
-        background: linear-gradient(120deg, var(--accent), var(--accent-2));
-        color: #061017;
+        background: linear-gradient(135deg, var(--accent), #ffbe67);
+        color: #23130d;
+        box-shadow: 0 18px 30px rgba(255, 128, 87, 0.24);
       }
 
-      .btn-ghost {
-        border-color: var(--line);
+      .btn-secondary {
+        background: rgba(255, 249, 241, 0.88);
+        border: 1px solid rgba(23, 19, 18, 0.1);
         color: var(--ink);
-        background: transparent;
       }
 
-      .hero-card {
-        background: linear-gradient(155deg, rgba(21, 31, 45, 0.96), rgba(9, 15, 24, 0.92));
-        padding: 24px;
-        border-radius: 22px;
-        border: 1px solid rgba(83, 181, 255, 0.2);
-        box-shadow: var(--card-shadow);
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
       }
 
-      .hero-card h3 {
-        margin: 0 0 16px;
-        font-size: 1.1rem;
+      .meta-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 14px;
+        border-radius: 16px;
+        background: rgba(255, 249, 241, 0.74);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: 0 10px 24px rgba(54, 32, 15, 0.08);
       }
 
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 14px;
-        margin-top: 20px;
-      }
-
-      .stat {
-        padding: 12px 14px;
-        border-radius: 12px;
-        background: rgba(12, 20, 30, 0.6);
-        border: 1px solid var(--line);
-      }
-
-      .stat strong {
-        font-size: 1.1rem;
+      .meta-chip strong {
         display: block;
-        word-break: break-word;
-        overflow-wrap: anywhere;
+        font-size: 0.96rem;
+        line-height: 1.1;
       }
 
-      .stat .small {
+      .meta-chip span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.77rem;
+        line-height: 1.2;
+      }
+
+      .hero-panel {
+        position: relative;
+        padding: 28px;
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(145deg, rgba(255, 252, 246, 0.92), rgba(248, 238, 223, 0.88)),
+          var(--surface-strong);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        animation: rise 720ms ease 80ms both;
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(41, 109, 255, 0.14), transparent 28%),
+          radial-gradient(circle at bottom left, rgba(48, 199, 159, 0.12), transparent 26%);
+        pointer-events: none;
+      }
+
+      .panel-label {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.76);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .panel-label::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-3);
+      }
+
+      .hero-panel h2 {
+        position: relative;
+        margin: 18px 0 10px;
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.85rem, 1.52rem + 1.1vw, 2.6rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-panel p {
+        position: relative;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .panel-stats {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .panel-stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+      }
+
+      .panel-stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .panel-stat strong {
+        display: block;
+        margin-top: 8px;
+        font-family: "Syne", sans-serif;
+        font-size: 1.55rem;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .panel-strip {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 22px;
+        background: var(--surface-dark);
+        color: #fff8ef;
+      }
+
+      .panel-strip strong {
+        display: block;
         font-size: 1rem;
+      }
+
+      .panel-strip span {
+        display: block;
+        color: rgba(255, 248, 239, 0.68);
+        font-size: 0.92rem;
+      }
+
+      .icon-cluster {
+        display: flex;
+        align-items: center;
+      }
+
+      .cluster-icon {
+        width: 44px;
+        height: 44px;
+        margin-left: -10px;
+        border-radius: 14px;
+        border: 2px solid rgba(25, 21, 20, 0.88);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+        object-fit: cover;
+        background: #0f0d0d;
+      }
+
+      .cluster-icon:first-child {
+        margin-left: 0;
       }
 
       section {
         padding: 42px 0;
       }
 
-      .section-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 18px;
-      }
-
-      .section-title h2 {
-        margin: 0;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.7rem;
-      }
-
-      .section-title span {
-        color: var(--muted);
-      }
-
-      .grid {
+      .section-head {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 18px;
+        align-items: end;
+        margin-bottom: 22px;
       }
 
-      .card {
-        padding: 18px;
-        border-radius: 18px;
-        background: var(--panel);
-        border: 1px solid var(--line);
+      .section-kicker {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: var(--accent-3);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-family: "Syne", sans-serif;
+        font-size: clamp(2rem, 1.56rem + 1vw, 3rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p,
+      .section-head span {
+        margin: 0;
+        color: var(--muted);
+        max-width: 540px;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+        gap: 20px;
+      }
+
+      .app-card {
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        min-height: 320px;
+        gap: 16px;
+        min-height: 340px;
+        padding: 20px;
+        border-radius: 26px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 250, 242, 0.94)),
+          var(--surface-strong);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+        animation: rise 620ms ease both;
       }
 
-      .card-header {
+      .app-card:nth-child(2) {
+        animation-delay: 60ms;
+      }
+
+      .app-card:nth-child(3) {
+        animation-delay: 100ms;
+      }
+
+      .app-card:nth-child(4) {
+        animation-delay: 140ms;
+      }
+
+      .app-card:nth-child(5) {
+        animation-delay: 180ms;
+      }
+
+      .app-card:nth-child(6) {
+        animation-delay: 220ms;
+      }
+
+      .app-card:nth-child(7) {
+        animation-delay: 260ms;
+      }
+
+      .app-card:nth-child(8) {
+        animation-delay: 300ms;
+      }
+
+      .app-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--card-accent), transparent 78%);
+      }
+
+      .app-card::after {
+        content: "";
+        position: absolute;
+        right: -70px;
+        top: -70px;
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: var(--card-glow);
+        filter: blur(20px);
+        pointer-events: none;
+      }
+
+      .app-card:hover,
+      .app-card:focus-within {
+        transform: translateY(-4px);
+        box-shadow: 0 26px 52px rgba(54, 32, 15, 0.14);
+      }
+
+      .app-top {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 14px;
       }
 
-      .app-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, #2b65f8, #66e8b7);
+      .app-icon-wrap {
+        width: 64px;
+        height: 64px;
         display: grid;
         place-items: center;
-        font-weight: 700;
-        color: #0b1016;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: 0 12px 24px rgba(46, 24, 7, 0.08);
       }
 
       .app-icon-img {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
         object-fit: cover;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-        background: #0b1016;
+        background: #0e0c0b;
       }
 
-      .tag {
-        padding: 4px 10px;
+      .app-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(83, 181, 255, 0.18);
-        color: #a7dcff;
-        font-size: 0.78rem;
-        font-weight: 600;
+        background: rgba(23, 19, 18, 0.06);
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
       }
 
-      .card p {
+      .app-body h3 {
         margin: 0;
+        font-size: 1.18rem;
+        line-height: 1.16;
+        letter-spacing: -0.03em;
+      }
+
+      .app-body p {
+        margin: 10px 0 0;
         color: var(--muted);
       }
 
-      .card-actions {
+      .app-note {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .store-row {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
         gap: 10px;
         margin-top: auto;
       }
 
-      .market-link {
+      .store-link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        padding: 9px 10px;
-        border-radius: 12px;
-        border: 1px solid rgba(77, 231, 163, 0.18);
-        background: rgba(77, 231, 163, 0.08);
-        font-weight: 600;
-        color: var(--accent);
+        gap: 8px;
+        min-height: 44px;
+        padding: 11px 14px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 0.92rem;
+        font-weight: 800;
         white-space: nowrap;
-        font-size: 0.95rem;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease;
       }
 
-      .market-link-muted {
-        border-style: dashed;
-        border-color: var(--line);
-        background: rgba(83, 181, 255, 0.06);
+      .store-link:hover,
+      .store-link:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .store-play {
+        background: rgba(48, 199, 159, 0.12);
+        border-color: rgba(48, 199, 159, 0.26);
+        color: #0f7d62;
+      }
+
+      .store-ios {
+        background: rgba(41, 109, 255, 0.1);
+        border-color: rgba(41, 109, 255, 0.18);
+        color: #2054c7;
+      }
+
+      .store-muted {
+        background: rgba(23, 19, 18, 0.05);
+        border-color: rgba(23, 19, 18, 0.1);
         color: var(--muted);
         cursor: default;
       }
@@ -302,86 +714,265 @@
         flex: 0 0 16px;
       }
 
-      .market-link-label {
-        line-height: 1;
-      }
-
-      .card .clamp {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
-        overflow: hidden;
-      }
-
-      .card-note {
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-
-      .card-actions-compact .market-link {
-        font-size: 0.9rem;
-        padding: 8px 10px;
-      }
-
-      .footer {
-        padding: 42px 0 56px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .footer-grid {
+      .story-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 20px;
       }
 
-      .footer a {
+      .info-card {
+        padding: 26px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 248, 239, 0.94)),
+          var(--surface);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: var(--shadow-md);
+      }
+
+      .info-card p {
+        margin: 0;
         color: var(--muted);
       }
 
-      .privacy {
-        font-size: 0.9rem;
-        color: var(--muted);
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
         margin-top: 18px;
       }
 
-      .fact-list {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
+      .feature-item {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(23, 19, 18, 0.08);
       }
 
-      .fact-list li {
-        margin-bottom: 8px;
+      .feature-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.98rem;
+      }
+
+      .feature-item span {
+        color: var(--muted);
+        font-size: 0.92rem;
       }
 
       .contact-card {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .contact-card strong {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.6rem, 1.32rem + 0.8vw, 2.15rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
       }
 
       .contact-email {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--ink);
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+        padding: 13px 16px;
+        border-radius: 999px;
+        background: var(--surface-dark);
+        color: #fff8ef;
+        font-weight: 700;
         word-break: break-word;
       }
 
-      @media (max-width: 720px) {
+      .contact-footnote {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .legal-wrap {
+        padding: 28px;
+        border-radius: 30px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 249, 241, 0.92)),
+          var(--surface-strong);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+        box-shadow: var(--shadow-md);
+      }
+
+      .legal-intro {
+        max-width: 760px;
+        margin: 0 0 20px;
+        color: var(--muted);
+      }
+
+      .legal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+      }
+
+      .legal-item {
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+      }
+
+      .legal-item strong {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 1rem;
+      }
+
+      .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .legal-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(23, 19, 18, 0.06);
+        color: var(--ink);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .legal-muted {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .legal-footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .site-footer {
+        padding: 0 0 56px;
+      }
+
+      .footer-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px 18px;
+        padding: 18px 20px;
+        border-radius: 22px;
+        background: rgba(255, 249, 241, 0.76);
+        border: 1px solid rgba(23, 19, 18, 0.08);
+      }
+
+      .footer-bar strong {
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-layout,
+        .story-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          max-width: 12ch;
+        }
+
+        .panel-strip {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .topbar {
+          top: 10px;
+          padding-top: 16px;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          border-radius: 26px;
+        }
+
+        .brand {
+          width: 100%;
+          justify-content: center;
+        }
+
         .nav-links {
-          display: none;
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          gap: 16px;
+          font-size: 0.94rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100vw - 22px, 1180px);
+        }
+
+        .hero {
+          padding-top: 26px;
+        }
+
+        .hero h1 {
+          max-width: 100%;
+        }
+
+        .section-head {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .panel-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-panel,
+        .info-card,
+        .legal-wrap {
+          padding: 22px;
+        }
+
+        .footer-bar {
+          align-items: flex-start;
         }
       }
     </style>
   </head>
   <body>
-    <header>
+    <header class="topbar">
       <div class="shell nav">
-        <div class="logo">
-          <div class="logo-mark"></div>
-          <div>
-            Ihar Pronka<br />
-            <span style="font-weight: 500; color: var(--muted); font-size: 0.85rem;">Mobile app developer</span>
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-copy">
+            <span class="brand-name">Ihar Pronka</span>
+            <span class="brand-role">Mobile app developer</span>
           </div>
         </div>
         <nav class="nav-links">
@@ -390,67 +981,114 @@
           <a href="#contact">Contact</a>
           <a href="#legal">Legal</a>
         </nav>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Let's talk</a>
       </div>
     </header>
 
     <main class="shell">
       <section class="hero">
-        <div>
-          <h1>Hi, I’m Ihar — creator of focused mobile apps and utilities.</h1>
-          <p>
-            I build lightweight mobile products for mood tracking, language, OCR, file conversion,
-            and simple AI-assisted everyday tasks.
-            Below you can find my featured apps, upcoming releases, and ways to reach me.
-          </p>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#featured">View apps</a>
-            <a class="btn-ghost" href="#contact">Contact me</a>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="eyebrow">Independent mobile products</div>
+            <h1>Apps with a clear point <span>of view.</span></h1>
+            <p>
+              I design and ship focused mobile apps across mood tracking, OCR, file conversion,
+              playful tools, and lightweight AI-driven experiences. The goal is simple: useful
+              products, fast UX, and interfaces people actually enjoy opening.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#featured">Explore apps</a>
+              <a class="btn btn-secondary" href="#contact">Contact</a>
+            </div>
+            <div class="hero-meta">
+              <div class="meta-chip">
+                <div>
+                  <strong>8 live apps</strong>
+                  <span>Utilities, creativity, lifestyle, games</span>
+                </div>
+              </div>
+              <div class="meta-chip">
+                <div>
+                  <strong>2 app stores</strong>
+                  <span>Google Play and App Store releases</span>
+                </div>
+              </div>
+              <div class="meta-chip">
+                <div>
+                  <strong>Lean product focus</strong>
+                  <span>Fast onboarding, useful flows, strong visual polish</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="hero-card">
-          <h3>Quick facts</h3>
-          <div class="stats">
-            <div class="stat">
-              <div style="color: var(--muted);">Apps featured</div>
-              <strong>8 featured</strong>
+
+          <aside class="hero-panel">
+            <div class="panel-label">Studio snapshot</div>
+            <h2>Modern mobile tools, not generic templates.</h2>
+            <p>
+              Each release is built around a single strong use case, then shaped into something
+              faster, cleaner, and more memorable than a default utility app.
+            </p>
+            <div class="panel-stats">
+              <div class="panel-stat">
+                <span>Featured</span>
+                <strong>8</strong>
+              </div>
+              <div class="panel-stat">
+                <span>Platforms</span>
+                <strong>Play + iOS</strong>
+              </div>
+              <div class="panel-stat">
+                <span>Best known for</span>
+                <strong>Utility UX</strong>
+              </div>
+              <div class="panel-stat">
+                <span>Contact</span>
+                <strong style="font-size: 1.06rem; line-height: 1.2;">oknorpCorp@gmail.com</strong>
+              </div>
             </div>
-            <div class="stat">
-              <div style="color: var(--muted);">Primary focus</div>
-              <strong>Mobile utilities</strong>
+            <div class="panel-strip">
+              <div>
+                <strong>Recent range</strong>
+                <span>BloomVibe, Slangify, FeelTrack, Bluriva, and more.</span>
+              </div>
+              <div class="icon-cluster" aria-hidden="true">
+                <img class="cluster-icon" src="assets/icons/bloomVibe.png" alt="" />
+                <img class="cluster-icon" src="assets/icons/slangify.png" alt="" />
+                <img class="cluster-icon" src="assets/icons/feeltrack.png" alt="" />
+                <img class="cluster-icon" src="assets/icons/bluriva-cropped.png" alt="" />
+              </div>
             </div>
-            <div class="stat">
-              <div style="color: var(--muted);">Contact</div>
-              <strong class="small">oknorpCorp@gmail.com</strong>
-            </div>
-          </div>
+          </aside>
         </div>
       </section>
 
       <section id="featured">
-        <div class="section-title">
-          <h2>Apps</h2>
-          <span>Google Play + App Store</span>
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Selected work</span>
+            <h2>Mobile apps across utility, mood, and play.</h2>
+          </div>
+          <p>Every card below links directly to the live store listing for that product.</p>
         </div>
-        <div class="grid">
-          <article class="card">
-            <div class="card-header">
-              <img
-                class="app-icon-img"
-                src="assets/icons/bloomVibe.png"
-                alt="BloomVibe icon"
-              />
-              <span class="tag">Entertainment</span>
+
+        <div class="apps-grid">
+          <article class="app-card" style="--card-accent: #ff9d6e; --card-glow: rgba(255, 157, 110, 0.2);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/bloomVibe.png" alt="BloomVibe icon" />
+              </div>
+              <span class="app-tag">Entertainment</span>
             </div>
-            <div>
-              <strong>BloomVibe AI Rituals</strong>
-              <p class="clamp">
-                AI-powered ideas, rituals, and daily inspiration tailored to your mood and vibe.
+            <div class="app-body">
+              <h3>BloomVibe AI Rituals</h3>
+              <p>
+                AI-powered rituals, prompts, and daily inspiration tailored to mood and personal vibe.
               </p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.oknorp.online.vibevoyageai"
                 target="_blank"
                 rel="noopener"
@@ -459,28 +1097,25 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <img
-                class="app-icon-img"
-                src="assets/icons/slangify.png"
-                alt="Slangify icon"
-              />
-              <span class="tag">Entertainment</span>
+
+          <article class="app-card" style="--card-accent: #4ca5ff; --card-glow: rgba(76, 165, 255, 0.18);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/slangify.png" alt="Slangify icon" />
+              </div>
+              <span class="app-tag">Entertainment</span>
             </div>
-            <div>
-              <strong>Slangify: AI Slang Translator</strong>
-              <p class="clamp">
-                Turns plain text into viral slang and Gen Z-style expressions in seconds.
-              </p>
+            <div class="app-body">
+              <h3>Slangify: AI Slang Translator</h3>
+              <p>Turns plain text into viral slang and playful Gen Z-style phrasing in seconds.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.slangify.pl"
                 target="_blank"
                 rel="noopener"
@@ -489,10 +1124,10 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
               <a
-                class="market-link"
+                class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/slangify-ai-slang-translator/id6762517432"
                 target="_blank"
                 rel="noopener"
@@ -501,28 +1136,25 @@
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></a
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <img
-                class="app-icon-img"
-                src="assets/icons/aitranslate.png"
-                alt="FileShift icon"
-              />
-              <span class="tag">Tools</span>
+
+          <article class="app-card" style="--card-accent: #30c79f; --card-glow: rgba(48, 199, 159, 0.18);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/aitranslate.png" alt="FileShift icon" />
+              </div>
+              <span class="app-tag">Tools</span>
             </div>
-            <div>
-              <strong>FileShift: File Converter</strong>
-              <p class="clamp">
-                Offline file converter for PDF, image, audio, and video tasks on mobile.
-              </p>
+            <div class="app-body">
+              <h3>FileShift: File Converter</h3>
+              <p>Offline file conversion for PDF, image, audio, and video tasks on mobile.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.freeok.online.aitranslate"
                 target="_blank"
                 rel="noopener"
@@ -531,10 +1163,10 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
               <a
-                class="market-link"
+                class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/fileshifter/id6762143036"
                 target="_blank"
                 rel="noopener"
@@ -543,28 +1175,25 @@
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></a
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <img
-                class="app-icon-img"
-                src="assets/icons/umowaai.png"
-                alt="Docutero icon"
-              />
-              <span class="tag">Tools</span>
+
+          <article class="app-card" style="--card-accent: #7d8eff; --card-glow: rgba(125, 142, 255, 0.18);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/umowaai.png" alt="Docutero icon" />
+              </div>
+              <span class="app-tag">Tools</span>
             </div>
-            <div>
-              <strong>Docutero OCR: PDF to Text</strong>
-              <p class="clamp">
-                Fast OCR scanner for converting photos and PDFs into editable text.
-              </p>
+            <div class="app-body">
+              <h3>Docutero OCR: PDF to Text</h3>
+              <p>Fast OCR scanning for turning photos and PDFs into editable text.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.freeok.umowaai.app"
                 target="_blank"
                 rel="noopener"
@@ -573,29 +1202,26 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <img
-                class="app-icon-img"
-                src="assets/icons/feeltrack.png"
-                alt="FeelTrack icon"
-              />
-              <span class="tag">Lifestyle</span>
+
+          <article class="app-card" style="--card-accent: #ff7f57; --card-glow: rgba(255, 127, 87, 0.18);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/feeltrack.png" alt="FeelTrack icon" />
+              </div>
+              <span class="app-tag">Lifestyle</span>
             </div>
-            <div>
-              <strong>FeelTrack: Mood Tracker</strong>
-              <p class="clamp">
-                Track your mood, add notes, and review your daily records in one place.
-              </p>
+            <div class="app-body">
+              <h3>FeelTrack: Mood Tracker</h3>
+              <p>Track moods, save notes, and review daily emotional patterns in one place.</p>
             </div>
-            <p class="card-note">iOS version is in progress.</p>
-            <div class="card-actions card-actions-compact">
+            <div class="app-note">Available on both Google Play and the App Store.</div>
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.oknorp.agriai"
                 target="_blank"
                 rel="noopener"
@@ -604,32 +1230,41 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
-              <span class="market-link market-link-muted"
+              <a
+                class="store-link store-ios"
+                href="https://apps.apple.com/pl/app/feeltrack-mood-journal/id6761005596"
+                target="_blank"
+                rel="noopener"
                 ><svg class="market-icon" viewBox="0 0 384 512" aria-hidden="true">
                   <path
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></span
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <div class="app-icon">TT</div>
-              <span class="tag">Games</span>
+
+          <article class="app-card" style="--card-accent: #296dff; --card-glow: rgba(41, 109, 255, 0.16);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img
+                  class="app-icon-img"
+                  src="assets/icons/turntimer-cropped.png"
+                  alt="Turn Timer icon"
+                />
+              </div>
+              <span class="app-tag">Games</span>
             </div>
-            <div>
-              <strong>Turn Timer - Local Multiplayer</strong>
-              <p class="clamp">
-                Simple turn timer for local multiplayer sessions, board games, and in-person play.
-              </p>
+            <div class="app-body">
+              <h3>Turn Timer - Local Multiplayer</h3>
+              <p>Simple turn timing for board games, party rounds, and in-person multiplayer sessions.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/turn-timer-local-multiplayer/id6764850882"
                 target="_blank"
                 rel="noopener"
@@ -638,24 +1273,29 @@
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></a
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <div class="app-icon">HT</div>
-              <span class="tag">Health</span>
+
+          <article class="app-card" style="--card-accent: #30c79f; --card-glow: rgba(48, 199, 159, 0.16);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img
+                  class="app-icon-img"
+                  src="assets/icons/hydrotally-cropped.png"
+                  alt="HydroTally icon"
+                />
+              </div>
+              <span class="app-tag">Health</span>
             </div>
-            <div>
-              <strong>HydroTally: Water Tracker</strong>
-              <p class="clamp">
-                Water intake tracker designed to help you stay consistent with daily hydration.
-              </p>
+            <div class="app-body">
+              <h3>HydroTally: Water Tracker</h3>
+              <p>Hydration tracking designed to keep daily water intake visible, simple, and consistent.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/hydrotally-water-tracker/id6762005743"
                 target="_blank"
                 rel="noopener"
@@ -664,24 +1304,25 @@
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></a
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
-          <article class="card">
-            <div class="card-header">
-              <div class="app-icon">BL</div>
-              <span class="tag">Photo</span>
+
+          <article class="app-card" style="--card-accent: #7ec6ff; --card-glow: rgba(126, 198, 255, 0.18);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/bluriva-cropped.png" alt="Bluriva icon" />
+              </div>
+              <span class="app-tag">Photo</span>
             </div>
-            <div>
-              <strong>Bluriva: Blur Photo Editor</strong>
-              <p class="clamp">
-                Photo editing app for blur effects, focus control, and quick image touch-ups.
-              </p>
+            <div class="app-body">
+              <h3>Bluriva: Blur Photo Editor</h3>
+              <p>Blur effects, focus control, and quick touch-ups for clean mobile photo editing.</p>
             </div>
-            <div class="card-actions">
+            <div class="store-row">
               <a
-                class="market-link"
+                class="store-link store-play"
                 href="https://play.google.com/store/apps/details?id=com.oknorp.bluriva"
                 target="_blank"
                 rel="noopener"
@@ -690,10 +1331,10 @@
                   <polygon points="14,12 18,8 21,10 17,14" fill="#53b5ff"></polygon>
                   <polygon points="3,2 17,10 14,12" fill="#ffd166"></polygon>
                   <polygon points="3,22 14,12 17,14" fill="#ff6b6b"></polygon>
-                </svg><span class="market-link-label">Google Play</span></a
+                </svg><span>Google Play</span></a
               >
               <a
-                class="market-link"
+                class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/bluriva-blur-photo-editor/id6761104165"
                 target="_blank"
                 rel="noopener"
@@ -702,7 +1343,7 @@
                     fill="currentColor"
                     d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
                   ></path>
-                </svg><span class="market-link-label">App Store</span></a
+                </svg><span>App Store</span></a
               >
             </div>
           </article>
@@ -710,146 +1351,195 @@
       </section>
 
       <section id="about">
-        <div class="section-title">
-          <h2>About me</h2>
-          <span>Independent developer</span>
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">How I build</span>
+            <h2>Focused products, compact flows, and strong visual clarity.</h2>
+          </div>
+          <p>Independent development with an emphasis on useful features rather than feature overload.</p>
         </div>
-        <div class="card">
-          <p>
-            I build mobile apps that are fast, focused, and easy to use. My work spans
-            entertainment, language, OCR, file utilities, and mood tracking, with a strong focus on
-            simple UX and lightweight mobile experiences.
-          </p>
-          <ul class="fact-list">
-            <li>App themes: mood journaling, slang tools, OCR, file conversion, hydration, timers, photo editing.</li>
-            <li>Design focus: minimal UI, fast onboarding, clear flows, practical everyday use.</li>
-            <li>Open to partnerships and feedback.</li>
-          </ul>
-        </div>
-      </section>
 
-      <section id="contact">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <span>Let’s connect</span>
-        </div>
-        <div class="card contact-card">
-          <p>For support, partnerships, or press, reach me here:</p>
-          <p class="contact-email">oknorpCorp@gmail.com</p>
+        <div class="story-grid">
+          <article class="info-card">
+            <p>
+              I build mobile apps that are quick to understand, pleasant to use, and visually
+              intentional. The product range spans entertainment, language, OCR, file utilities,
+              hydration, timers, mood tracking, and creative editing.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <strong>Product angle</strong>
+                <span>One sharp use case per app, then refined into a clean mobile flow.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Design priority</strong>
+                <span>Fast onboarding, clear actions, lightweight screens, and strong readability.</span>
+              </div>
+              <div class="feature-item">
+                <strong>App themes</strong>
+                <span>Mood, slang, OCR, conversion, hydration, board game utility, and editing.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Collaboration</strong>
+                <span>Open to support conversations, partnerships, and product feedback.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card contact-card" id="contact">
+            <div>
+              <span class="section-kicker" style="color: var(--accent);">Contact</span>
+              <strong>Need support, a partnership, or a product question?</strong>
+              <p style="margin-top: 12px;">
+                Reach out directly and I will respond with the right next step for the app or request.
+              </p>
+            </div>
+            <div>
+              <a class="contact-email" href="mailto:oknorpCorp@gmail.com">oknorpCorp@gmail.com</a>
+              <div class="contact-footnote" style="margin-top: 12px;">
+                Best for support, collaboration, press, and legal contact.
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
       <section id="legal">
-        <div class="section-title">
-          <h2>Legal</h2>
-          <span>App-specific policies</span>
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Policies</span>
+            <h2>App-specific legal pages.</h2>
+          </div>
+          <p>Each app can link to its own privacy policy and terms when the public URLs are available.</p>
         </div>
-        <div class="card">
-          <p>
-            Each app has its own privacy policy and, where needed, its own terms. A single shared
-            legal document only makes sense when every app follows the same data practices and the
-            same usage rules, which is usually not the case.
+
+        <div class="legal-wrap">
+          <p class="legal-intro">
+            A shared legal page only makes sense when every product follows the same data practices
+            and the same terms. For this portfolio, app-by-app links are the cleaner structure.
           </p>
-          <ul class="fact-list">
-            <li>
-              BloomVibe AI Rituals:
-              <a
-                href="https://iharoknorp.github.io/bloom-vibe-privacy-policy/"
-                target="_blank"
-                rel="noopener"
-                >Privacy Policy</a
-              >
-              /
-              <a
-                href="https://iharoknorp.github.io/bloom-vibe-terms-of-service/"
-                target="_blank"
-                rel="noopener"
-                >Terms</a
-              >
-            </li>
-            <li>
-              Slangify: AI Slang Translator:
-              <a
-                href="https://iharoknorp.github.io/slangify-privacy-policy/"
-                target="_blank"
-                rel="noopener"
-                >Privacy Policy</a
-              >
-              /
-              <a
-                href="https://iharoknorp.github.io/slangify-terms/"
-                target="_blank"
-                rel="noopener"
-                >Terms</a
-              >
-            </li>
-            <li>
-              FileShift: File Converter:
-              <a
-                href="https://iharoknorp.github.io/translate_privacy_policy/"
-                target="_blank"
-                rel="noopener"
-                >Privacy Policy</a
-              >
-              /
-              <a
-                href="https://iharoknorp.github.io/translate_terms/"
-                target="_blank"
-                rel="noopener"
-                >Terms</a
-              >
-            </li>
-            <li>
-              Docutero OCR: PDF to Text:
-              <a
-                href="https://iharoknorp.github.io/umowa-privacy_policy/"
-                target="_blank"
-                rel="noopener"
-                >Privacy Policy</a
-              >
-            </li>
-            <li>
-              FeelTrack: Mood Tracker:
-              <a
-                href="https://iharoknorp.github.io/farm-syn-ai-privacy-policy/"
-                target="_blank"
-                rel="noopener"
-                >Privacy Policy</a
-              >
-              /
-              <a
-                href="https://iharoknorp.github.io/farm-syn-ai-terms/"
-                target="_blank"
-                rel="noopener"
-                >Terms</a
-              >
-            </li>
-            <li>Turn Timer, HydroTally, and Bluriva: legal links can be added here when public URLs are published.</li>
-          </ul>
-          <p class="privacy">
-            Docutero currently has a public privacy page listed here. If you publish a separate
-            Terms page for it later, it can be added in the same format.
-          </p>
-          <p class="privacy">Legal contact: oknorpCorp@gmail.com</p>
+
+          <div class="legal-grid">
+            <article class="legal-item">
+              <strong>BloomVibe AI Rituals</strong>
+              <div class="legal-links">
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/bloom-vibe-privacy-policy/"
+                  target="_blank"
+                  rel="noopener"
+                  >Privacy Policy</a
+                >
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/bloom-vibe-terms-of-service/"
+                  target="_blank"
+                  rel="noopener"
+                  >Terms</a
+                >
+              </div>
+            </article>
+
+            <article class="legal-item">
+              <strong>Slangify: AI Slang Translator</strong>
+              <div class="legal-links">
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/slangify-privacy-policy/"
+                  target="_blank"
+                  rel="noopener"
+                  >Privacy Policy</a
+                >
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/slangify-terms/"
+                  target="_blank"
+                  rel="noopener"
+                  >Terms</a
+                >
+              </div>
+            </article>
+
+            <article class="legal-item">
+              <strong>FileShift: File Converter</strong>
+              <div class="legal-links">
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/translate_privacy_policy/"
+                  target="_blank"
+                  rel="noopener"
+                  >Privacy Policy</a
+                >
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/translate_terms/"
+                  target="_blank"
+                  rel="noopener"
+                  >Terms</a
+                >
+              </div>
+            </article>
+
+            <article class="legal-item">
+              <strong>Docutero OCR: PDF to Text</strong>
+              <div class="legal-links">
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/umowa-privacy_policy/"
+                  target="_blank"
+                  rel="noopener"
+                  >Privacy Policy</a
+                >
+              </div>
+            </article>
+
+            <article class="legal-item">
+              <strong>FeelTrack: Mood Tracker</strong>
+              <div class="legal-links">
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/farm-syn-ai-privacy-policy/"
+                  target="_blank"
+                  rel="noopener"
+                  >Privacy Policy</a
+                >
+                <a
+                  class="legal-link"
+                  href="https://iharoknorp.github.io/farm-syn-ai-terms/"
+                  target="_blank"
+                  rel="noopener"
+                  >Terms</a
+                >
+              </div>
+            </article>
+
+            <article class="legal-item">
+              <strong>Turn Timer, HydroTally, and Bluriva</strong>
+              <div class="legal-muted">
+                Public legal URLs can be added here later in the same app-specific format.
+              </div>
+            </article>
+          </div>
+
+          <div class="legal-footer">
+            Docutero currently has a public privacy page. If you publish a separate Terms page for
+            it later, it can be added here as well. Legal contact: oknorpCorp@gmail.com
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="shell footer-grid">
+    <footer class="site-footer">
+      <div class="shell footer-bar">
         <div>
           <strong>Ihar Pronka</strong>
-          <p class="privacy">Mobile apps built with care and clarity.</p>
+          <div style="color: var(--muted);">Modern mobile apps with a strong utility core.</div>
         </div>
-        <div>
-          <strong>Explore</strong>
-          <div><a href="#featured">Apps</a></div>
-          <div><a href="#about">About</a></div>
-          <div><a href="#contact">Contact</a></div>
-        </div>
-        <div>
-          <strong>Legal</strong>
-          <div><a href="#legal">Legal</a></div>
+        <div class="footer-links">
+          <a href="#featured">Apps</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="#legal">Legal</a>
         </div>
       </div>
     </footer>
