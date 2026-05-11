@@ -6,7 +6,7 @@
     <title>Ihar Pronka - Mobile Apps and Utilities</title>
     <meta
       name="description"
-      content="Ihar Pronka builds focused mobile apps for mood tracking, slang, OCR, file conversion, hydration, editing, and lightweight AI-powered tools."
+      content="Ihar Pronka builds focused mobile apps for mood tracking, habit tracking, slang, OCR, file conversion, hydration, editing, and lightweight AI-powered tools."
     />
     <meta name="theme-color" content="#f7efe2" />
     <style>
@@ -589,6 +589,10 @@
         animation-delay: 300ms;
       }
 
+      .app-card:nth-child(9) {
+        animation-delay: 340ms;
+      }
+
       .app-card::before {
         content: "";
         position: absolute;
@@ -670,6 +674,40 @@
       .app-note {
         color: var(--muted);
         font-size: 0.92rem;
+      }
+
+      .app-title-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+      }
+
+      .app-title-link::after {
+        content: "Page";
+        flex: 0 0 auto;
+        padding: 4px 7px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(23, 19, 18, 0.1);
+        color: var(--card-accent);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
+      }
+
+      .app-title-link:hover::after,
+      .app-title-link:focus-visible::after {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.9);
+        border-color: var(--card-accent);
       }
 
       .store-row {
@@ -1016,9 +1054,9 @@
             <div class="eyebrow">Independent mobile products</div>
             <h1>Apps with a clear point <span>of view.</span></h1>
             <p>
-              I design and ship focused mobile apps across mood tracking, OCR, file conversion,
-              playful tools, and lightweight AI-driven experiences. The goal is simple: useful
-              products, fast UX, and interfaces people actually enjoy opening.
+              I design and ship focused mobile apps across mood tracking, habit tracking, OCR,
+              file conversion, playful tools, and lightweight AI-driven experiences. The goal is
+              simple: useful products, fast UX, and interfaces people actually enjoy opening.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#featured">Explore apps</a>
@@ -1027,7 +1065,7 @@
             <div class="hero-meta">
               <div class="meta-chip">
                 <div>
-                  <strong>8 live apps</strong>
+                  <strong>9 live apps</strong>
                   <span>Utilities, creativity, lifestyle, games</span>
                 </div>
               </div>
@@ -1056,7 +1094,7 @@
             <div class="panel-stats">
               <div class="panel-stat">
                 <span>Featured</span>
-                <strong>8</strong>
+                <strong>9</strong>
               </div>
               <div class="panel-stat">
                 <span>Platforms</span>
@@ -1074,13 +1112,13 @@
             <div class="panel-strip">
               <div>
                 <strong>Recent range</strong>
-                <span>BloomVibe, Slangify, FeelTrack, Bluriva, and more.</span>
+                <span>SparkleHabit, BloomVibe, Slangify, FeelTrack, and more.</span>
               </div>
               <div class="icon-cluster" aria-hidden="true">
+                <img class="cluster-icon" src="assets/icons/sparklehabit.jpg" alt="" />
                 <img class="cluster-icon" src="assets/icons/bloomVibe.png" alt="" />
                 <img class="cluster-icon" src="assets/icons/slangify.png" alt="" />
                 <img class="cluster-icon" src="assets/icons/feeltrack.png" alt="" />
-                <img class="cluster-icon" src="assets/icons/bluriva-cropped.png" alt="" />
               </div>
             </div>
           </aside>
@@ -1093,7 +1131,7 @@
             <span class="section-kicker">Selected work</span>
             <h2>Mobile apps across utility, mood, and play.</h2>
           </div>
-          <p>Every card below links directly to the live store listing for that product.</p>
+          <p>Every card below links to live store listings, with product pages where available.</p>
         </div>
 
         <div class="apps-grid">
@@ -1105,7 +1143,15 @@
               <span class="app-tag">Entertainment</span>
             </div>
             <div class="app-body">
-              <h3>BloomVibe AI Rituals</h3>
+              <h3>
+                <a
+                  class="app-title-link"
+                  href="https://iharoknorp.github.io/bloom-vibe-page/"
+                  target="_blank"
+                  rel="noopener"
+                  >BloomVibe AI Rituals</a
+                >
+              </h3>
               <p>
                 AI-powered rituals, prompts, and daily inspiration tailored to mood and personal vibe.
               </p>
@@ -1173,7 +1219,15 @@
               <span class="app-tag">Tools</span>
             </div>
             <div class="app-body">
-              <h3>FileShift: File Converter</h3>
+              <h3>
+                <a
+                  class="app-title-link"
+                  href="https://iharoknorp.github.io/file_shift_page/"
+                  target="_blank"
+                  rel="noopener"
+                  >FileShift: File Converter</a
+                >
+              </h3>
               <p>Offline file conversion for PDF, image, audio, and video tasks on mobile.</p>
             </div>
             <div class="store-row">
@@ -1259,6 +1313,33 @@
               <a
                 class="store-link store-ios"
                 href="https://apps.apple.com/pl/app/feeltrack-mood-journal/id6761005596"
+                target="_blank"
+                rel="noopener"
+                ><svg class="market-icon" viewBox="0 0 384 512" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M318.7 268.1c-.2-36.7 16.4-64.4 50.1-84.9-18.8-26.9-47-41.8-84.6-44.9-35.6-3.1-74.4 20.8-88.6 20.8-15 0-49.4-19.8-76.5-19.8C63.3 140.2 0 187.9 0 285.9c0 29.1 5.3 59.1 15.8 90.2 14.1 41.2 64.6 142.2 117.3 140.6 27.6-.7 47.1-19.6 82.9-19.6 34.7 0 52.8 19.6 83.6 19.6 53.1-.8 100.2-92.6 113.6-133.9-71.4-33.6-94.9-118.6-94.5-114.7zm-57.4-165c27.5-32.6 24.8-62.3 24-73.1-24.3 1.4-52.4 16.5-68.4 35.2-17.6 20.2-27.8 45.1-25.5 73 26.4 2 50.9-11.1 69.9-35.1z"
+                  ></path>
+                </svg><span>App Store</span></a
+              >
+            </div>
+          </article>
+
+          <article class="app-card" style="--card-accent: #f4bd45; --card-glow: rgba(244, 189, 69, 0.2);">
+            <div class="app-top">
+              <div class="app-icon-wrap">
+                <img class="app-icon-img" src="assets/icons/sparklehabit.jpg" alt="SparkleHabit icon" />
+              </div>
+              <span class="app-tag">Lifestyle</span>
+            </div>
+            <div class="app-body">
+              <h3>SparkleHabit: Habit Tracker</h3>
+              <p>Cozy habit tracking for daily check-ins, streaks, calendar history, and local reminders.</p>
+            </div>
+            <div class="store-row">
+              <a
+                class="store-link store-ios"
+                href="https://apps.apple.com/app/sparklehabit-habit-tracker/id6764134999"
                 target="_blank"
                 rel="noopener"
                 ><svg class="market-icon" viewBox="0 0 384 512" aria-hidden="true">
@@ -1388,7 +1469,7 @@
             <p>
               I build mobile apps that are quick to understand, pleasant to use, and visually
               intentional. The product range spans entertainment, language, OCR, file utilities,
-              hydration, timers, mood tracking, and creative editing.
+              hydration, timers, mood tracking, habit tracking, and creative editing.
             </p>
             <div class="feature-list">
               <div class="feature-item">
@@ -1401,7 +1482,7 @@
               </div>
               <div class="feature-item">
                 <strong>App themes</strong>
-                <span>Mood, slang, OCR, conversion, hydration, board game utility, and editing.</span>
+                <span>Mood, habits, slang, OCR, conversion, hydration, board game utility, and editing.</span>
               </div>
               <div class="feature-item">
                 <strong>Collaboration</strong>
@@ -1578,7 +1659,7 @@
             </article>
 
             <article class="legal-item">
-              <strong>SparkleHabit</strong>
+              <strong>SparkleHabit: Habit Tracker</strong>
               <div class="legal-links">
                 <a
                   class="legal-link"
