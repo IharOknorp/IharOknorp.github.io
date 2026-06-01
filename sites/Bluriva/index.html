@@ -241,13 +241,7 @@
   body.only-ios .sb-android{display:none}
   body.only-android .sb-ios{display:none}
 
-  /* iPhone screenshots are iOS-only — hide their visuals in Android-only view */
-  body.only-android .phone-stage{display:none}
-  body.only-android #showcase{display:none}
-  body.only-android .hero-grid{grid-template-columns:1fr;text-align:center}
-  body.only-android .hero .sub{margin-left:auto;margin-right:auto}
-  body.only-android .hero .store-row,
-  body.only-android .hero .meta-row{justify-content:center}
+  /* screenshots swap to their Android variants in android-only view (see JS below) */
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
   .reveal.in{opacity:1;transform:none}
@@ -256,9 +250,9 @@
 <body>
 <script>
   // Decide which store(s) and screenshots to show.
-  //   ?store=ios     -> App Store only + iPhone screenshots   (use in App Store listing URL)
-  //   ?store=android -> Google Play only, screenshots hidden  (use in Google Play listing URL)
-  //   ?store=both    -> both stores + screenshots (forces both, even on a phone)
+  //   ?store=ios     -> App Store only + iOS screenshots       (use in App Store listing URL)
+  //   ?store=android -> Google Play only + Android screenshots (use in Google Play listing URL)
+  //   ?store=both    -> both stores + iOS screenshots (forces both, even on a phone)
   //   no parameter   -> auto-detect device; desktop shows both
   (function(){
     var forced = new URLSearchParams(location.search).get('store');
@@ -272,6 +266,15 @@
     else if (isIOS)                cls = 'only-ios';    // auto-detect
     else if (isAndroid)            cls = 'only-android';
     if (cls) document.body.classList.add(cls);
+
+    // In android-only view, point every screenshot at its Android variant.
+    if (cls === 'only-android') {
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('img[src^="screenshots/ios/"]').forEach(function(img){
+          img.src = img.getAttribute('src').replace('screenshots/ios/', 'screenshots/android/');
+        });
+      });
+    }
   })();
 </script>
 
