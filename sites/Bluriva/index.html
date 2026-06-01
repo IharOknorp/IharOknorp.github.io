@@ -43,6 +43,7 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
   section{position:relative}
+  section[id]{scroll-margin-top:84px}
 
   /* ---------- ambient glow ---------- */
   .glow{position:fixed;border-radius:50%;filter:blur(120px);opacity:.45;z-index:0;pointer-events:none}
@@ -76,7 +77,12 @@
   h1{font-size:clamp(38px,5.4vw,62px);line-height:1.05;letter-spacing:-.03em;font-weight:900;margin-bottom:20px}
   h1 .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{font-size:19px;color:var(--txt-dim);max-width:520px;margin-bottom:34px}
-  .store-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .store-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
+  .store-badge{display:inline-flex;align-items:center;transition:transform .2s,filter .2s}
+  .store-badge:hover{transform:translateY(-3px)}
+  .badge-apple{height:56px;width:auto;display:block}
+  .badge-google{height:54px;width:auto;display:block} /* badge fills PNG edge-to-edge, so match box height */
+  .cta-card .store-row{justify-content:center}
   .store-btn{display:flex;align-items:center;gap:12px;background:#fff;color:#0b0b14;
     padding:12px 22px;border-radius:14px;font-weight:600;transition:transform .2s,box-shadow .2s;
     box-shadow:0 14px 36px -14px rgba(0,0,0,.6)}
@@ -90,58 +96,35 @@
 
   /* ---------- phone mockup ---------- */
   .phone-stage{position:relative;display:grid;place-items:center}
-  .phone{position:relative;width:300px;height:610px;background:#05050c;border-radius:46px;
-    padding:13px;box-shadow:var(--shadow),0 0 0 2px rgba(255,255,255,.06);transform:rotate(3deg);
-    transition:transform .5s}
-  .phone:hover{transform:rotate(0)}
-  .notch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:120px;height:26px;
-    background:#05050c;border-radius:0 0 16px 16px;z-index:5}
+  .device-shot{width:300px;max-width:80vw;height:auto;display:block;
+    filter:drop-shadow(0 30px 70px rgba(124,92,255,.35)) drop-shadow(0 10px 30px rgba(0,0,0,.5));
+    transform:rotate(3deg);transition:transform .5s}
+  .device-shot:hover{transform:rotate(0)}
   .screen{width:100%;height:100%;border-radius:34px;overflow:hidden;position:relative;
     background:linear-gradient(160deg,#1b1b30,#11111f)}
-  .shot-top{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;
-    font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.03)}
-  .shot-top .badge{font-size:10px;font-weight:700;background:var(--grad);padding:4px 9px;border-radius:999px}
-  .photo{position:relative;height:360px;overflow:hidden}
-  .photo .scene{position:absolute;inset:0;
-    background:
-      radial-gradient(circle at 30% 30%, #ffd6a5, transparent 40%),
-      radial-gradient(circle at 70% 60%, #a5d8ff, transparent 45%),
-      linear-gradient(135deg,#5a4a8a,#2b6b8a 60%,#7a3a6a)}
-  /* faces / sensitive regions being blurred */
-  .blurzone{position:absolute;border-radius:14px;
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
-    border:2px solid rgba(124,92,255,.9);
-    box-shadow:0 0 0 3px rgba(124,92,255,.25),0 8px 24px rgba(0,0,0,.3)}
-  .blurzone::after{content:attr(data-label);position:absolute;top:-22px;left:0;
-    font-size:9px;font-weight:700;color:#fff;background:var(--brand);padding:2px 7px;border-radius:6px;white-space:nowrap}
-  .bz1{top:60px;left:46px;width:78px;height:84px}
-  .bz2{top:150px;right:40px;width:92px;height:62px}
-  .bz3{bottom:34px;left:60px;width:150px;height:34px}
-  .scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--brand-2),transparent);
-    animation:scan 3.4s ease-in-out infinite;opacity:.9}
-  @keyframes scan{0%,100%{top:8%}50%{top:92%}}
-  .shot-tools{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-  .tool{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--txt-dim)}
-  .tool .ico{width:30px;height:30px;border-radius:9px;background:rgba(124,92,255,.16);
-    display:grid;place-items:center;color:var(--brand-2)}
-  .slider{height:6px;border-radius:999px;background:rgba(255,255,255,.1);flex:1;position:relative}
-  .slider::after{content:"";position:absolute;left:0;top:0;bottom:0;width:62%;border-radius:999px;background:var(--grad)}
-  .slider .knob{position:absolute;left:62%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;
-    border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .shot-img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:12px;text-align:center;color:var(--txt-dim);padding:30px}
+  .shot-placeholder svg{color:var(--brand)}
+  .shot-placeholder b{font-size:16px;color:var(--txt)}
+  .shot-placeholder span{font-size:13px;line-height:1.5}
+  .shot-placeholder code{color:var(--brand-2);font-size:12px}
   .float-card{position:absolute;background:var(--card);border:1px solid var(--card-line);
     border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:11px;
     box-shadow:0 18px 44px -16px rgba(0,0,0,.6);backdrop-filter:blur(8px)}
   .float-card .fi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--grad)}
   .float-card .ft{font-size:13px}.float-card .ft b{display:block;font-size:14px}
-  .fc1{top:30px;left:-46px;animation:floaty 5s ease-in-out infinite}
-  .fc2{bottom:60px;right:-40px;animation:floaty 5s ease-in-out infinite .8s}
+  .fc1{top:80px;left:-8px;animation:floaty 5s ease-in-out infinite}
+  .fc2{bottom:150px;right:-12px;animation:floaty 5s ease-in-out infinite .8s}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
   @media(max-width:920px){
     .hero-grid{grid-template-columns:1fr;text-align:center}
     .sub{margin-left:auto;margin-right:auto}
     .store-row,.meta-row{justify-content:center}
-    .fc1{left:-10px}.fc2{right:-10px}
+    .fc1{left:0}.fc2{right:0}
+  }
+  @media(max-width:420px){
+    .fc1,.fc2{display:none}
   }
 
   /* ---------- trust strip ---------- */
@@ -240,11 +223,57 @@
   .foot-links{display:flex;gap:24px}
   .foot-links a:hover{color:var(--txt)}
 
+  /* ---------- showcase gallery ---------- */
+  .showcase{background:var(--bg-soft);border-top:1px solid var(--card-line);border-bottom:1px solid var(--card-line)}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:end}
+  .shot-card{text-align:center}
+  .shot-card .frame{display:grid;place-items:center;margin-bottom:22px}
+  .shot-card img{width:230px;max-width:72vw;height:auto;
+    filter:drop-shadow(0 24px 50px rgba(124,92,255,.30)) drop-shadow(0 8px 22px rgba(0,0,0,.5));
+    transition:transform .4s}
+  .shot-card:hover img{transform:translateY(-8px)}
+  .shot-card .st{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--brand-2);margin-bottom:6px;text-transform:uppercase}
+  .shot-card h3{font-size:20px;margin-bottom:8px}
+  .shot-card p{color:var(--txt-dim);font-size:15px;max-width:300px;margin:0 auto}
+  @media(max-width:860px){.shots{grid-template-columns:1fr;gap:56px}}
+
+  /* platform-aware store badges: hide the "other" store when needed */
+  body.only-ios .sb-android{display:none}
+  body.only-android .sb-ios{display:none}
+
+  /* iPhone screenshots are iOS-only — hide their visuals in Android-only view */
+  body.only-android .phone-stage{display:none}
+  body.only-android #showcase{display:none}
+  body.only-android .hero-grid{grid-template-columns:1fr;text-align:center}
+  body.only-android .hero .sub{margin-left:auto;margin-right:auto}
+  body.only-android .hero .store-row,
+  body.only-android .hero .meta-row{justify-content:center}
+
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
   .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
+<script>
+  // Decide which store(s) and screenshots to show.
+  //   ?store=ios     -> App Store only + iPhone screenshots   (use in App Store listing URL)
+  //   ?store=android -> Google Play only, screenshots hidden  (use in Google Play listing URL)
+  //   ?store=both    -> both stores + screenshots (forces both, even on a phone)
+  //   no parameter   -> auto-detect device; desktop shows both
+  (function(){
+    var forced = new URLSearchParams(location.search).get('store');
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/.test(ua);
+    var cls = '';
+    if (forced === 'both')         cls = '';            // show everything
+    else if (forced === 'ios')     cls = 'only-ios';
+    else if (forced === 'android') cls = 'only-android';
+    else if (isIOS)                cls = 'only-ios';    // auto-detect
+    else if (isAndroid)            cls = 'only-android';
+    if (cls) document.body.classList.add(cls);
+  })();
+</script>
 
 <div class="glow a"></div>
 <div class="glow b"></div>
@@ -261,11 +290,12 @@
     </a>
     <nav class="nav-links">
       <a href="#features">Features</a>
+      <a href="#showcase">Screens</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="nav-cta" href="#download">Get the app →</a>
+    <a class="nav-cta" href="#get">Get the app →</a>
   </div>
 </header>
 
@@ -278,13 +308,11 @@
       <p class="sub">Bluriva automatically detects faces, license plates and text in your photos — then blurs or pixelates them in one tap. It even strips hidden metadata before you post.</p>
 
       <div class="store-row" id="download">
-        <a class="store-btn" href="https://apps.apple.com/pl/app/bluriva-blur-photo-editor/id6761104165" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 1.6c0 1.2-.5 2.3-1.3 3.2-.9.9-2 1.6-3.1 1.5-.1-1.1.5-2.3 1.3-3.1.8-.9 2.2-1.5 3.1-1.6zM20.5 17c-.5 1.2-.8 1.7-1.4 2.7-.9 1.4-2.2 3.2-3.8 3.2-1.4 0-1.8-.9-3.7-.9s-2.4.9-3.7.9c-1.6 0-2.8-1.6-3.7-3C2 18.8 1.7 14.5 3.5 12c.9-1.3 2.3-2.1 3.6-2.1 1.4 0 2.3.9 3.5.9 1.1 0 1.8-.9 3.5-.9 1.2 0 2.5.7 3.4 1.8-3 1.6-2.5 5.9.5 6.3z"/></svg>
-          <span><span class="s1">Download on the</span><span class="s2">App Store</span></span>
+        <a class="store-badge sb-ios" href="https://apps.apple.com/pl/app/bluriva-blur-photo-editor/id6761104165" target="_blank" rel="noopener" aria-label="Download on the App Store">
+          <img class="badge-apple" src="badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" />
         </a>
-        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.oknorp.bluriva" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path fill="#34A853" d="M3.6 21.4l9.9-9.4-2.7-2.6z"/><path fill="#4285F4" d="M3.1 2.4C3 2.6 3 2.9 3 3.2v17.6c0 .3 0 .6.1.8l9.6-9.4z"/><path fill="#FBBC04" d="M16.9 9.1L13.5 7 4.1 1.6c-.3-.2-.7-.3-1-.2l9.4 9.6z"/><path fill="#EA4335" d="M16.9 14.9l3.4-1.9c.7-.4 1-1.1.7-1.7-.1-.3-.4-.5-.7-.7l-3.4-1.9-3.4 3.4z"/></svg>
-          <span><span class="s1">GET IT ON</span><span class="s2">Google Play</span></span>
+        <a class="store-badge sb-android" href="https://play.google.com/store/apps/details?id=com.oknorp.bluriva" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <img class="badge-google" src="badges/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play" />
         </a>
       </div>
 
@@ -296,30 +324,8 @@
     </div>
 
     <div class="phone-stage">
-      <div class="phone">
-        <div class="notch"></div>
-        <div class="screen">
-          <div class="shot-top"><span>Bluriva</span><span class="badge">AI Detect</span></div>
-          <div class="photo">
-            <div class="scene"></div>
-            <div class="scan"></div>
-            <div class="blurzone bz1" data-label="Face"></div>
-            <div class="blurzone bz2" data-label="Face"></div>
-            <div class="blurzone bz3" data-label="License plate"></div>
-          </div>
-          <div class="shot-tools">
-            <div class="tool">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/></svg></span>
-              Blur intensity
-              <span class="slider"><span class="knob"></span></span>
-            </div>
-            <div class="tool">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span>
-              Pixelate · Blur · Manual brush
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Screenshot already includes its own device frame -->
+      <img class="device-shot" src="screenshots/ios/detect-faces.png" alt="Bluriva — automatically detecting and blurring faces" />
 
       <div class="float-card fc1">
         <span class="fi"><svg viewBox="0 0 24 24" width="18" fill="none" stroke="#fff" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg></span>
@@ -410,6 +416,35 @@
   </div>
 </section>
 
+<!-- SHOWCASE GALLERY -->
+<section class="sec showcase" id="showcase">
+  <div class="wrap">
+    <div class="eyebrow">See it in action</div>
+    <h2>Real screens, real protection</h2>
+    <p class="lede">From automatic detection to precise manual control — here's Bluriva at work.</p>
+    <div class="shots">
+      <div class="shot-card reveal">
+        <div class="frame"><img src="screenshots/ios/detect-faces.png" alt="Bluriva detecting faces automatically" /></div>
+        <div class="st">Auto-detect</div>
+        <h3>Every face, found</h3>
+        <p>Bluriva spots faces instantly and lets you toggle each one on or off.</p>
+      </div>
+      <div class="shot-card reveal">
+        <div class="frame"><img src="screenshots/ios/detect-plate.png" alt="Bluriva blurring a license plate" /></div>
+        <div class="st">Plates &amp; more</div>
+        <h3>License plates, covered</h3>
+        <p>Car number plates are recognized and blurred — no hunting for them by hand.</p>
+      </div>
+      <div class="shot-card reveal">
+        <div class="frame"><img src="screenshots/ios/manual-editor.png" alt="Bluriva manual editor with blur and pixelate" /></div>
+        <div class="st">Full control</div>
+        <h3>Blur or pixelate, your way</h3>
+        <p>Open the editor to switch styles, drag, resize, and dial in the exact intensity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="sec how" id="how">
   <div class="wrap">
@@ -485,19 +520,17 @@
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta">
+<section class="cta" id="get">
   <div class="wrap">
     <div class="cta-card">
       <h2>Protect every photo before you share it</h2>
       <p>Download Bluriva free and blur what matters in seconds.</p>
       <div class="store-row">
-        <a class="store-btn" href="https://apps.apple.com/pl/app/bluriva-blur-photo-editor/id6761104165" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 1.6c0 1.2-.5 2.3-1.3 3.2-.9.9-2 1.6-3.1 1.5-.1-1.1.5-2.3 1.3-3.1.8-.9 2.2-1.5 3.1-1.6zM20.5 17c-.5 1.2-.8 1.7-1.4 2.7-.9 1.4-2.2 3.2-3.8 3.2-1.4 0-1.8-.9-3.7-.9s-2.4.9-3.7.9c-1.6 0-2.8-1.6-3.7-3C2 18.8 1.7 14.5 3.5 12c.9-1.3 2.3-2.1 3.6-2.1 1.4 0 2.3.9 3.5.9 1.1 0 1.8-.9 3.5-.9 1.2 0 2.5.7 3.4 1.8-3 1.6-2.5 5.9.5 6.3z"/></svg>
-          <span><span class="s1">Download on the</span><span class="s2">App Store</span></span>
+        <a class="store-badge sb-ios" href="https://apps.apple.com/pl/app/bluriva-blur-photo-editor/id6761104165" target="_blank" rel="noopener" aria-label="Download on the App Store">
+          <img class="badge-apple" src="badges/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" />
         </a>
-        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.oknorp.bluriva" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path fill="#34A853" d="M3.6 21.4l9.9-9.4-2.7-2.6z"/><path fill="#4285F4" d="M3.1 2.4C3 2.6 3 2.9 3 3.2v17.6c0 .3 0 .6.1.8l9.6-9.4z"/><path fill="#FBBC04" d="M16.9 9.1L13.5 7 4.1 1.6c-.3-.2-.7-.3-1-.2l9.4 9.6z"/><path fill="#EA4335" d="M16.9 14.9l3.4-1.9c.7-.4 1-1.1.7-1.7-.1-.3-.4-.5-.7-.7l-3.4-1.9-3.4 3.4z"/></svg>
-          <span><span class="s1">GET IT ON</span><span class="s2">Google Play</span></span>
+        <a class="store-badge sb-android" href="https://play.google.com/store/apps/details?id=com.oknorp.bluriva" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <img class="badge-google" src="badges/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play" />
         </a>
       </div>
     </div>
